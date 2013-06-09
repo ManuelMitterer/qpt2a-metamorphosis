@@ -5,8 +5,8 @@ Metamorphosis::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   #fb -> APP:"Metamorphosis_local"
-  ENV['FACEBOOK_APP_ID'] = "414600118616046"
-  ENV['FACEBOOK_SECRET'] = "94c7eaecb6a8787e6ff6871e5f61bf02"
+  ENV['FACEBOOK_APP_ID'] = ""
+  ENV['FACEBOOK_SECRET'] = ""
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
