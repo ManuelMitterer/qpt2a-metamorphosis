@@ -1,0 +1,38 @@
+<!-- 
+  Autoren:  Manuel Mitterer, Matthias Prieth
+  Lizenz:   AGPL 3
+ -->
+<h1 class="brand">Top Users</h1>
+
+<div class="CSSTable" >
+    <table >
+      <tr>
+        <td>profil-picture</td>
+        <td>username</td>
+        <td>total picture likes</td>
+        <td>email</td>
+        <td>profil-description</td>
+        <td>show</td>
+
+      </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+            <%= link_to_user_pic(user) %>
+        </td>
+        <td><%= user.nice_username %></td>
+        <td>
+          <span class="badge badge-important">
+            <%= user.total_likes %>
+          </span>
+        </td>
+        <td><%= user.email %></td>
+        <td><%= user.description %></td>
+        <td><%= link_to 'Show', user %></td>
+      </tr>
+    <% end %>
+    </table>
+</div>
+
+<br />
+<%-# link_to 'New User', new_user_path -%>

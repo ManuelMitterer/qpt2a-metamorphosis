@@ -1,0 +1,57 @@
+<p id="notice" xmlns="http://www.w3.org/1999/html"><%= notice %></p>
+
+<!--<div class="cssThumb">-->
+<div class="span4">
+  <%= render :partial => "shared/singlePin", :locals => {:picture => @picture} %>
+</div>
+<div class="span6">
+  <p>
+    <b>Name:</b>
+    <%= @picture.name %>
+  </p>
+  <% if @picture.description %>
+  <p>
+    <b>Description:</b>
+    <%= @picture.description %>
+  </p>
+  <% end %>
+  <% if @picture.parent %>
+  <p>
+    <b>Parent:</b>
+    <%= link_to @picture.parent.name, picture_path(@picture.parent)  %>
+  </p>
+  <% end %>
+  <% if @picture.gallery?%>
+  <p>
+    <b>Gallery:</b>
+    <%= @picture.gallery %>
+  </p>
+  <% end %>
+  <p>
+    <b>Creator:</b>
+    <%= link_to @picture.user.nice_username, user_path(@picture.user)  %>
+  </p>
+
+  <p>
+    <b>Picture-likes:</b>
+    <%= @picture.pic_likes %>
+  </p>
+  <p>
+    <% if user_signed_in? && current_user == @picture.user %>
+    <%= link_to 'Bild löschen', @picture, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
+    <% end %>
+  </p>
+  <!--fb_like-->
+  <div class="fb-like" data-href="<%= request.url %>" data-send="true" data-layout="button_count" data-width="360" data-show-faces="true"></div>
+  <!--fb_comment-->
+</br>
+</br>
+<div class="fb-comments" href="<%= request.url %>" data-width="345" data-num-posts="1"></div>
+</div>
+<hr class="hr-split-visible">
+<p>
+  <b>Changed Versions:</b>
+    <% @picture.children.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
+    <%= render :partial => "shared/singlePin", :locals => {:picture => picture} %>
+    <% end %>
+</p>

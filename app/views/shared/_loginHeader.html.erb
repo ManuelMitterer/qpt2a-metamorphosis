@@ -1,0 +1,76 @@
+<!-- 
+  Autoren:  Manuel Mitterer, Matthias Prieth
+  Lizenz:   AGPL 3
+ -->
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <%= link_to 'Metamorphosis', root_url, :class => 'brand' %>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <li <% if current_page?(root_url) %>class="active"<% end %>>
+            <%= link_to root_url, :id => 'homeLink' do %>
+              <i class='icon-home'></i> Home
+            <% end %>
+          </li>
+          <li <% if current_page?(users_path) %>class="active"<% end %>>
+            <%= link_to users_path, :id => 'userLink' do %>
+              <i class='icon-star'></i> Top Users
+            <% end %>
+          </li>
+          <li <% if current_page?(new_picture_path) %>class="active"<% end %>>
+            <%= link_to new_picture_path, :id => 'newPicture' do %>
+              <i class='icon-picture'></i> Upload Picture
+            <% end %>
+          </li>
+          <li <% if current_page?("/impressum") %>class="active"<% end %>>
+            <%= link_to "/impressum" do %>
+              <i class='icon-info-sign'></i> Info  
+            <% end %>
+          </li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if user_signed_in? %>
+              <li <% if current_page?(edit_user_registration_path) %>class="active"<% end %>>
+                <%= link_to edit_user_registration_path do %>
+                  <i class='icon-pencil'></i> Edit Profile
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class='icon-off'></i> Logout
+                <% end %>
+              </li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to ("Logged in as "+current_user.nice_username), user_path(current_user) %></li>
+              <li><%= link_to image_tag(current_user.profil_pic_url(:thumb).to_s), user_path(current_user), :id => 'user-pic-header' %></li>
+          <% else %>
+              <li>
+                <%= link_to new_user_registration_path do %>
+                  <i class='icon-plus-sign'></i> Sign up
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path do %>
+                    <i class='icon-user'></i> Login
+                <% end %>
+              </li>
+              <li><%= button_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" %></li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

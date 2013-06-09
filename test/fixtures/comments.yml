@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+cone:
+  comment: MyText
+  picture_id: <%= ActiveRecord::Fixtures.identify(:pone) %>
+  user_id: <%= ActiveRecord::Fixtures.identify(:uone) %>
+
+ctwo:
+  comment: MyText
+  picture_id: <%= ActiveRecord::Fixtures.identify(:pone) %>
+  user_id: <%= ActiveRecord::Fixtures.identify(:uone) %>

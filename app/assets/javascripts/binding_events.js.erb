@@ -1,0 +1,28 @@
+$( document ).ready( function()
+{
+    $('#masonry-container').masonry({
+        itemSelector: '.pin'
+    });
+
+    $('.polaroid-images img').adipoli({
+        'startEffect' : 'overlay',
+        'hoverEffect' : 'normal'
+    });
+});
+$(document).on('page:load', function(e){
+    $('#masonry-container').masonry({
+        itemSelector: '.pin'
+    });
+
+    $('.polaroid-images img').adipoli({
+        'startEffect' : 'overlay',
+        'hoverEffect' : 'normal'
+    });
+    $.getScript("<%= asset_url('lightbox.js') %>");
+	//console.log("works!");
+	console.timeStamp("page load event fired!");
+});
+$(document).on('page:change', function(e){
+	//console.log("works!");
+	console.timeStamp("page change event fired!");
+});

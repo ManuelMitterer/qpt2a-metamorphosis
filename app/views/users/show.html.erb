@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<% if @user.profil_pic? %>
+  <%= image_tag(@user.profil_pic_url(:thumb).to_s) %>
+<% else %>
+  <%= image_tag('default_profil_pic.jpg') %>
+<% end %>
+<% if user_signed_in? && current_user == @user %>
+<%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+<% if @user.description %>
+<p>
+  <b>Description:</b>
+  <%= @user.description %>
+</p>
+<% end %>
+<p>
+  <b>Total-likes:</b>
+  <%if @user.total_likes.nil? %>
+    0
+  <% else %>
+    <%= @user.total_likes %>
+  <% end %>
+</p>
+<p><b>Pictures created:</b></p>
+<div id="masonry-container">
+    <% @user.pictures.sort_by{|e| e.pic_likes}.reverse_each do |picture| %>
+      <%= render :partial => "shared/singlePin", :locals => {:picture => picture} %>
+    <% end %>
+</div>

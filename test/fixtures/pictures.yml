@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+pone:
+  id: 1
+  name: MyString
+  description: MyText
+  type: 
+  parent: 1
+  gallery: MyString
+  rating: 1.5
+  user_id: <%= ActiveRecord::Fixtures.identify(:uone) %>
+  image: irgendwo
+
+ptwo:
+  id: 2
+  name: MyString
+  description: MyText
+  type: 
+  parent: 1
+  gallery: MyString
+  rating: 1.5
+  user_id: <%= ActiveRecord::Fixtures.identify(:uone) %>
