@@ -14,7 +14,7 @@ Die Plattform ist speziell für Künstler/Hobbydesigner entwickelt worden. Das G
 Die Plattform sieht vor, dass unangemeldete User Bilder betrachten und runterladen können. Angemeldete User können diese Bilder zusätzlich bearbeiten, wieder hochladen und bewerten. Beim Bewerten der Bilder, wirkt sich dies positiv auf den Punktestand der User aus, welcher dann in der Bestenliste nach oben steigt.
 
 
-## Ersteller
+## Creators
 
-Manuel Mitterer
-Matthias Prieth
+* [Manuel Mitterer](https://github.com/ManuelMitterer)
+* Matthias Prieth
